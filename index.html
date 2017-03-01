@@ -1,9 +1,24 @@
 <html>
     <head>
         <title>Shoe Features</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h2></h2>
-        <p></p>
+        <h2>Hello there.</h2>
+        <p>Here is a shoe. Check out its amazing features.</p>
+
+        <img id="shoe-image" src="shoes.png" alt="Shoe" usemap="#shoe">
+        <map name="shoe" id="shoe-map">
+            <area alt="" title="" href="" shape="poly" coords="282,454,347,415,387,444,315,478">
+            <area alt="" title="" href="" shape="poly" coords="747,376,896,282,915,330,763,411">
+            <area alt="" title="" href="" shape="poly" coords="245,337,247,415,350,360,350,287">
+        </map>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="map-resize.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('shoe-map').imageMapResize();
+            });
+        </script>
     </body>
 </html>
