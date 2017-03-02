@@ -4,21 +4,107 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h2>Hello there.</h2>
-        <p>Here is a shoe. Check out its amazing features.</p>
+        <div id="container">
+            <h2>Hello there.</h2>
+            <p>Here is a shoe. Check out its amazing features.</p>
 
-        <img id="shoe-image" src="shoes.png" alt="Shoe" usemap="#shoe">
-        <map name="shoe" id="shoe-map">
-            <area alt="" title="" href="" shape="poly" coords="282,454,347,415,387,444,315,478">
-            <area alt="" title="" href="" shape="poly" coords="747,376,896,282,915,330,763,411">
-            <area alt="" title="" href="" shape="poly" coords="245,337,247,415,350,360,350,287">
-        </map>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="map-resize.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('shoe-map').imageMapResize();
+            <img id="shoe-image" src="shoes.png" alt="Shoe" usemap="#shoe">
+            <map name="shoe" id="shoe-map">
+                <area alt="" class="poi 1 front" shape="poly" coords="282,454,347,415,387,444,315,478">
+                <area alt="" class="poi 2 heel" shape="poly" coords="747,376,896,282,915,330,763,411">
+                <area alt="" class="poi 3 sole" shape="poly" coords="245,337,247,415,350,360,350,287">
+            </map>
+
+            <div id="info-card">
+                <h4 id="info-card-title"></h4>
+                <p id="info-card-content"></p>
+                <p id="info-card-close">Close</p>
+            </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="map-resize.js"></script>
+        <script type="text/javascript">
+		    $('map').imageMapResize();
+            $('#info-card').toggle();
+
+            $('.poi').click(function(){
+                var classList = $(this).attr('class').split(/\s+/);
+
+                var title, content;
+                
+                if(classList.indexOf('heel')>-1){
+                    console.log('Heel Clicked.');
+                    title = 'Padded Heel.'
+                    content = 'Extra padding provided to cushion your heels.'
+                }
+                else if(classList.indexOf('sole')>-1){
+                    console.log('Sole Clicked.');
+                    title = 'Improved treads.'
+                    content = 'Get more control with deeper treads. Never slip again..'
+                }
+                else if(classList.indexOf('front')>-1){
+                    console.log('Front Clicked.');
+                    title = 'Greater aeration.'
+                    content = 'Perforated front net provides greater aeration and a lighter feeling.'
+                }
+
+                $('#info-card').toggle();
+                $('#info-card-title').text(title);
+                $('#info-card-content').text(content);                 
             });
-        </script>
+
+            // $('.front').click(function(){
+            //     $('#info-card').toggle();
+            //     $('#info-card-title').text('');
+            //     $('#info-card-content').text(''); 
+            // });
+            
+            $('#info-card-close').click(function(){
+                $('#info-card').toggle();
+            });
+
+            for (var i=1; i<=3;i++) {
+
+                var points = $('.poi.' + i).attr('coords').split(',');
+                var x = parseInt(points[0])+20;
+                var y = parseInt(points[1])+120;
+                
+                var holder = document.createElement("div");
+                holder.className = "pulse-ball "+i;  
+                holder.id = i;      
+                // holder.setAttribute("onclick", "showInfo()");
+                holder.style.top = y; 
+                holder.style.left = x;
+                document.getElementById("container").appendChild(holder);
+            }
+
+            // function showInfo() {
+                
+            //     // var className = $(this).attr('class').split(/\s+/);
+            //     // var poi_n = className[1];
+            //     // $('.poi '+poi_n).click();
+            // }
+            
+            $('.pulse-ball').click(function(){
+                var classList = $(this).attr('class').split(/\s+/);
+                var poi_n = classList[1];
+                $('.poi.'+poi_n).click();
+            })
+
+            $(window).resize(function(){
+                var pulses = document.getElementsByClassName('pulse-ball');                
+                var point,x,y;
+                for(var i=1;i<=3;i++){
+                    point = $('.poi.' + i).attr('coords').split(',');
+                    x = parseInt(point[0])+20;
+                    y = parseInt(point[1])+120;
+                    console.log(x,y)
+                    pulses[i-1].style.top = y;
+                    pulses[i-1].style.left = x;
+                }
+
+            });
+
+	    </script>
     </body>
 </html>
