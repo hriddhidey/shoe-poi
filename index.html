@@ -18,7 +18,7 @@
             <div id="info-card">
                 <h4 id="info-card-title"></h4>
                 <p id="info-card-content"></p>
-                <p id="info-card-close">Close</p>
+                <p id="info-card-close"></p>
             </div>
         </div>
         <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
@@ -28,8 +28,9 @@
   crossorigin="anonymous"></script>
         <script type="text/javascript" src="map-resize.js"></script>
         <script type="text/javascript">
+            // $('#info-card').toggle();
+            $('#info-card-close').text('Close');
 		    $('map').imageMapResize();
-            $('#info-card').toggle();
 
             $('.poi').click(function(){
                 var classList = $(this).attr('class').split(/\s+/);
@@ -44,7 +45,7 @@
                 else if(classList.indexOf('sole')>-1){
                     console.log('Sole Clicked.');
                     title = 'Improved treads.'
-                    content = 'Get more control with deeper treads. Never slip again..'
+                    content = 'Get more control with deeper treads. Never slip again.'
                 }
                 else if(classList.indexOf('front')>-1){
                     console.log('Front Clicked.');
@@ -52,19 +53,14 @@
                     content = 'Perforated front net provides greater aeration and a lighter feeling.'
                 }
 
-                $('#info-card').toggle();
+                // $('#info-card').toggle();
+                document.getElementById('info-card').style.visibility="visible";
                 $('#info-card-title').text(title);
                 $('#info-card-content').text(content);                 
             });
-
-            // $('.front').click(function(){
-            //     $('#info-card').toggle();
-            //     $('#info-card-title').text('');
-            //     $('#info-card-content').text(''); 
-            // });
             
             $('#info-card-close').click(function(){
-                $('#info-card').toggle();
+                document.getElementById('info-card').style.visibility="hidden";
             });
 
             for (var i=1; i<=3;i++) {
