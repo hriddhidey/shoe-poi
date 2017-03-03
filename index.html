@@ -29,80 +29,83 @@
         <script type="text/javascript" src="map-resize.js"></script>
         <script type="text/javascript">
             // $('#info-card').toggle();
-            $('#info-card-close').text('Close');
-		    $('map').imageMapResize();
+            $(document).ready(function(){
 
-            $('.poi').click(function(){
-                var classList = $(this).attr('class').split(/\s+/);
+                $('#info-card-close').text('Close');
+                $('map').imageMapResize();
 
-                var title, content;
+                $('.poi').click(function(){
+                    var classList = $(this).attr('class').split(/\s+/);
+
+                    var title, content;
+                    
+                    if(classList.indexOf('heel')>-1){
+                        console.log('Heel Clicked.');
+                        title = 'Padded Heel.'
+                        content = 'Extra padding provided to cushion your heels.'
+                    }
+                    else if(classList.indexOf('sole')>-1){
+                        console.log('Sole Clicked.');
+                        title = 'Improved treads.'
+                        content = 'Get more control with deeper treads. Never slip again.'
+                    }
+                    else if(classList.indexOf('front')>-1){
+                        console.log('Front Clicked.');
+                        title = 'Greater aeration.'
+                        content = 'Perforated front net provides greater aeration and a lighter feeling.'
+                    }
+
+                    // $('#info-card').toggle();
+                    document.getElementById('info-card').style.visibility="visible";
+                    $('#info-card-title').text(title);
+                    $('#info-card-content').text(content);                 
+                });
                 
-                if(classList.indexOf('heel')>-1){
-                    console.log('Heel Clicked.');
-                    title = 'Padded Heel.'
-                    content = 'Extra padding provided to cushion your heels.'
-                }
-                else if(classList.indexOf('sole')>-1){
-                    console.log('Sole Clicked.');
-                    title = 'Improved treads.'
-                    content = 'Get more control with deeper treads. Never slip again.'
-                }
-                else if(classList.indexOf('front')>-1){
-                    console.log('Front Clicked.');
-                    title = 'Greater aeration.'
-                    content = 'Perforated front net provides greater aeration and a lighter feeling.'
+                $('#info-card-close').click(function(){
+                    document.getElementById('info-card').style.visibility="hidden";
+                });
+
+                for (var i=1; i<=3;i++) {
+
+                    var points = $('.poi.' + i).attr('coords').split(',');
+                    var x = parseInt(points[0])+20;
+                    var y = parseInt(points[1])+120;
+                    
+                    var holder = document.createElement("div");
+                    holder.className = "pulse-ball "+i;  
+                    holder.id = i;      
+                    // holder.setAttribute("onclick", "showInfo()");
+                    holder.style.top = y; 
+                    holder.style.left = x;
+                    document.getElementById("container").appendChild(holder);
                 }
 
-                // $('#info-card').toggle();
-                document.getElementById('info-card').style.visibility="visible";
-                $('#info-card-title').text(title);
-                $('#info-card-content').text(content);                 
-            });
-            
-            $('#info-card-close').click(function(){
-                document.getElementById('info-card').style.visibility="hidden";
-            });
-
-            for (var i=1; i<=3;i++) {
-
-                var points = $('.poi.' + i).attr('coords').split(',');
-                var x = parseInt(points[0])+20;
-                var y = parseInt(points[1])+120;
+                // function showInfo() {
+                    
+                //     // var className = $(this).attr('class').split(/\s+/);
+                //     // var poi_n = className[1];
+                //     // $('.poi '+poi_n).click();
+                // }
                 
-                var holder = document.createElement("div");
-                holder.className = "pulse-ball "+i;  
-                holder.id = i;      
-                // holder.setAttribute("onclick", "showInfo()");
-                holder.style.top = y; 
-                holder.style.left = x;
-                document.getElementById("container").appendChild(holder);
-            }
+                $('.pulse-ball').click(function(){
+                    var classList = $(this).attr('class').split(/\s+/);
+                    var poi_n = classList[1];
+                    $('.poi.'+poi_n).click();
+                })
 
-            // function showInfo() {
-                
-            //     // var className = $(this).attr('class').split(/\s+/);
-            //     // var poi_n = className[1];
-            //     // $('.poi '+poi_n).click();
-            // }
-            
-            $('.pulse-ball').click(function(){
-                var classList = $(this).attr('class').split(/\s+/);
-                var poi_n = classList[1];
-                $('.poi.'+poi_n).click();
-            })
+                $(window).resize(function(){
+                    var pulses = document.getElementsByClassName('pulse-ball');                
+                    var point,x,y;
+                    for(var i=1;i<=3;i++){
+                        point = $('.poi.' + i).attr('coords').split(',');
+                        x = parseInt(point[0])+20;
+                        y = parseInt(point[1])+120;
+                        console.log(x,y)
+                        pulses[i-1].style.top = y;
+                        pulses[i-1].style.left = x;
+                    }
 
-            $(window).resize(function(){
-                var pulses = document.getElementsByClassName('pulse-ball');                
-                var point,x,y;
-                for(var i=1;i<=3;i++){
-                    point = $('.poi.' + i).attr('coords').split(',');
-                    x = parseInt(point[0])+20;
-                    y = parseInt(point[1])+120;
-                    console.log(x,y)
-                    pulses[i-1].style.top = y;
-                    pulses[i-1].style.left = x;
-                }
-
+                });
             });
 
 	    </script>
