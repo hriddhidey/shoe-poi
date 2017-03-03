@@ -37,9 +37,9 @@ p {
     font-weight: lighter;
     box-shadow: 0 3px 30px 0;
 
-    -webkit-transition: opacity ease-in-out 1s;
-    -moz-transition: opacity ease-in-out 1s;
-    transition: opacity ease-in-out 1s;
+    -webkit-transition: opacity ease-in-out 0.5s;
+    -moz-transition: opacity ease-in-out 0.5s;
+    transition: opacity ease-in-out 0.5s;
 
     z-index: 20;
 }
