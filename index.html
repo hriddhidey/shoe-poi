@@ -21,7 +21,6 @@
                 <p id="info-card-close"></p>
             </div>
         </div>
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
         <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -78,19 +77,11 @@
                     var holder = document.createElement("div");
                     holder.className = "pulse-ball "+i;  
                     holder.id = i;      
-                    // holder.setAttribute("onclick", "showInfo()");
                     holder.style.top = y; 
                     holder.style.left = x;
                     document.getElementById("container").appendChild(holder);
                 }
 
-                // function showInfo() {
-                    
-                //     // var className = $(this).attr('class').split(/\s+/);
-                //     // var poi_n = className[1];
-                //     // $('.poi '+poi_n).click();
-                // }
-                
                 $('.pulse-ball').click(function(){
                     var classList = $(this).attr('class').split(/\s+/);
                     var poi_n = classList[1];
