@@ -35,7 +35,7 @@ p {
     color: #333;
     border: 1px solid #eee;
     font-weight: lighter;
-    box-shadow: 0 3px 30px 0;
+    box-shadow: 0 5px 20px 0 #777;
 
     -webkit-transition: opacity ease-in-out 0.5s;
     -moz-transition: opacity ease-in-out 0.5s;
@@ -47,6 +47,28 @@ p {
 #info-card p {
     color: #777;
     font-size: 0.9em;
+}
+
+button {
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 0.7em;
+    border: 1px solid #ccc;
+    background-color: #fff; 
+    cursor: pointer;
+    
+    -webkit-transition: box-shadow 0.1s ease-in-out;
+    -moz-transition: box-shadow 0.1s ease-in-out;
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    box-shadow: 0 2px 2px 0 #ccc;
 }
 
 @keyframes pulse {

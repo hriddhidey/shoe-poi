@@ -18,7 +18,7 @@
             <div id="info-card">
                 <h4 id="info-card-title"></h4>
                 <p id="info-card-content"></p>
-                <p id="info-card-close"></p>
+                <button id="info-card-close" onclick="removeCard()"></button>
             </div>
         </div>
         <script
@@ -30,7 +30,7 @@
             // $('#info-card').toggle();
             $(document).ready(function(){
 
-                $('#info-card-close').text('Close');
+                $('#info-card-close').text('CLOSE');
                 $('map').imageMapResize();
 
                 $('.poi').click(function(){
@@ -62,11 +62,11 @@
                     $('#info-card-content').text(content);                 
                 });
                 
-                $('#info-card-close').click(function(){
-                    var card = document.getElementById('info-card');
-                    card.style.opacity=0;
-                    card.style.visibility="hidden";
-                });
+                // $('#info-card-close').click(function(){
+                //     var card = document.getElementById('info-card');
+                //     card.style.opacity=0;
+                //     card.style.visibility="hidden";
+                // });
 
                 for (var i=1; i<=3;i++) {
 
@@ -102,6 +102,12 @@
 
                 });
             });
+
+            function removeCard(){
+                var card = document.getElementById('info-card');
+                card.style.opacity = 0;
+                card.style.visibility = "hidden";
+            }
 
 	    </script>
     </body>
