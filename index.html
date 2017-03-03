@@ -56,13 +56,17 @@
                     }
 
                     // $('#info-card').toggle();
-                    document.getElementById('info-card').style.visibility="visible";
+                    var card = document.getElementById('info-card');
+                    card.style.visibility="visible";
+                    card.style.opacity=1;
                     $('#info-card-title').text(title);
                     $('#info-card-content').text(content);                 
                 });
                 
                 $('#info-card-close').click(function(){
-                    document.getElementById('info-card').style.visibility="hidden";
+                    var card = document.getElementById('info-card');
+                    card.style.opacity=0;
+                    card.style.visibility="hidden";
                 });
 
                 for (var i=1; i<=3;i++) {
