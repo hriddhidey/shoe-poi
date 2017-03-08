@@ -10,15 +10,15 @@
 
             <img id="shoe-image" src="shoes.png" alt="Shoe" usemap="#shoe">
             <map name="shoe" id="shoe-map">
-                <area alt="" class="poi 1 front" shape="poly" coords="282,454,347,415,387,444,315,478">
-                <area alt="" class="poi 2 heel" shape="poly" coords="747,376,896,282,915,330,763,411">
-                <area alt="" class="poi 3 sole" shape="poly" coords="245,337,247,415,350,360,350,287">
+                <area alt="" class="poi 1 front" onclick="handleClick(this)" shape="poly" coords="282,454,347,415,387,444,315,478">
+                <area alt="" class="poi 2 heel" onclick="handleClick(this)" shape="poly" coords="747,376,896,282,915,330,763,411">
+                <area alt="" class="poi 3 sole" onclick="handleClick(this)" shape="poly" coords="245,337,247,415,350,360,350,287">
             </map>
 
             <div id="info-card">
                 <h4 id="info-card-title"></h4>
                 <p id="info-card-content"></p>
-                <button id="info-card-close" onclick="removeCard()"></button>
+                <button id="info-card-close" onclick="removeCard()">CLOSE</button>
             </div>
         </div>
         <script
@@ -27,44 +27,48 @@
   crossorigin="anonymous"></script>
         <script type="text/javascript" src="map-resize.js"></script>
         <script type="text/javascript">
-            // $('#info-card').toggle();
-            $(document).ready(function(){
 
-                $('#info-card-close').text('CLOSE');
-                $('map').imageMapResize();
+            var card = document.getElementById('info-card');
+            var closeCard = document.getElementById('info-card-close');
+            var cardTitle = document.getElementById('info-card-title');
+            var cardContent = document.getElementById('info-card-content');
+            var title,content;
+            var imageMap = document.querySelector('map');
 
-                $('.poi').click(function(){
-                    var classList = $(this).attr('class').split(/\s+/);
+            function handleClick(poi){
+                var classNames = poi.className.split(/\s+/);
+                if (classNames[2]=='heel'){
+                    console.log('Heel Clicked.');
+                    title = 'Padded Heel.'
+                    content = 'Extra padding provided to cushion your heels.'
+                }
+                else if (classNames[2]=='sole'){
+                    console.log('Sole Clicked.');
+                    title = 'Improved treads.'
+                    content = 'Get more control with deeper treads. Never slip again.'
+                }
+                else if (classNames[2]=='front'){
+                    console.log('Front Clicked.');
+                    title = 'Greater aeration.'
+                    content = 'Perforated front net provides greater aeration and a lighter feeling.'
+                }
 
-                    var title, content;
-                    
-                    if(classList.indexOf('heel')>-1){
-                        console.log('Heel Clicked.');
-                        title = 'Padded Heel.'
-                        content = 'Extra padding provided to cushion your heels.'
-                    }
-                    else if(classList.indexOf('sole')>-1){
-                        console.log('Sole Clicked.');
-                        title = 'Improved treads.'
-                        content = 'Get more control with deeper treads. Never slip again.'
-                    }
-                    else if(classList.indexOf('front')>-1){
-                        console.log('Front Clicked.');
-                        title = 'Greater aeration.'
-                        content = 'Perforated front net provides greater aeration and a lighter feeling.'
-                    }
+                card.style.visibility="visible";
+                card.style.opacity=1;
+                cardTitle.innerHTML = title;
+                cardContent.innerHTML = content;
+                
+            }
 
-                    // $('#info-card').toggle();
-                    var card = document.getElementById('info-card');
-                    card.style.visibility="visible";
-                    card.style.opacity=1;
-                    $('#info-card-title').text(title);
-                    $('#info-card-content').text(content);                 
-                });
+            document.addEventListener("DOMContentLoaded", function(event) { 
+                
+                imageMapResize();
+                
+
 
                 for (var i=1; i<=3;i++) {
 
-                    var points = $('.poi.' + i).attr('coords').split(',');
+                    var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
                     var x = parseInt(points[0])+20;
                     var y = parseInt(points[1])+120;
                     
@@ -73,16 +77,36 @@
                     holder.id = i;      
                     holder.style.top = y; 
                     holder.style.left = x;
+                    // holder.onclick = pulseClick(); 
                     document.getElementById("container").appendChild(holder);
                 }
 
-                $('.pulse-ball').click(function(){
-                    var classList = $(this).attr('class').split(/\s+/);
-                    var poi_n = classList[1];
-                    $('.poi.'+poi_n).click();
-                })
 
-                $(window).resize(function(){
+
+                // $('.pulse-ball').click(function(){
+                //     var classList = $(this).attr('class').split(/\s+/);
+                //     var poi_n = classList[1];
+                //     $('.poi.'+poi_n).click();
+                // })
+
+                document.addEventListener('click', function(e) {
+                    e = e || window.event;
+                    var target = e.target || e.srcElement;
+                        // text = target.textContent || text.innerText;   
+                    console.log(target)
+                    var classes = target.className.split(/\s+/);
+                    if(classes[0]=='pulse-ball'){
+                        var tnode = document.getElementsByClassName('poi '+classes[1])
+                        console.log(tnode)
+                        // tnode.onclick = handleClick()
+                        handleClick(tnode[0]);
+                        // handleClick(tnode)
+                    }
+                    
+                }, false);
+                
+
+                window.addEventListener('resize',function(){
                     var pulses = document.getElementsByClassName('pulse-ball');                
                     var point,x,y;
                     for(var i=1;i<=3;i++){
@@ -93,8 +117,8 @@
                         pulses[i-1].style.top = y;
                         pulses[i-1].style.left = x;
                     }
-
                 });
+
             });
 
             function removeCard(){
