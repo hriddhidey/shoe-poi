@@ -21,10 +21,6 @@
                 <button id="info-card-close" onclick="removeCard()">CLOSE</button>
             </div>
         </div>
-        <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
         <script type="text/javascript" src="map-resize.js"></script>
         <script type="text/javascript">
 
@@ -77,17 +73,8 @@
                     holder.id = i;      
                     holder.style.top = y; 
                     holder.style.left = x;
-                    // holder.onclick = pulseClick(); 
                     document.getElementById("container").appendChild(holder);
                 }
-
-
-
-                // $('.pulse-ball').click(function(){
-                //     var classList = $(this).attr('class').split(/\s+/);
-                //     var poi_n = classList[1];
-                //     $('.poi.'+poi_n).click();
-                // })
 
                 document.addEventListener('click', function(e) {
                     e = e || window.event;
@@ -110,7 +97,7 @@
                     var pulses = document.getElementsByClassName('pulse-ball');                
                     var point,x,y;
                     for(var i=1;i<=3;i++){
-                        point = $('.poi.' + i).attr('coords').split(',');
+                        point = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
                         x = parseInt(point[0])+20;
                         y = parseInt(point[1])+120;
                         console.log(x,y)
