@@ -5,7 +5,6 @@ var cardContent = document.getElementById('info-card-content');
 var title,content;
 var imageMap = document.querySelector('map');
 
-
 function handleClick(poi){
     var classNames = poi.className.split(/\s+/);
     if (classNames[2]=='heel'){
@@ -29,26 +28,31 @@ function handleClick(poi){
 }
 
 
+
 document.addEventListener("DOMContentLoaded", function(event) { 
     
     imageMapResize();
     var image = document.getElementById('object-image')
+    var hasImageLoaded = image.complete;
+    
+    while(!hasImageLoaded);
+
+    for (var i=1; i<=3;i++) {
+        var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
+
+        var x = parseInt(points[0]);
+        var y = parseInt(points[1])+pulsePosition.top - 5;
+        
+        var holder = document.createElement("div");
+        holder.className = "pulse-ball "+i;  
+        holder.id = i;      
+        holder.style.top = y; 
+        holder.style.left = x;
+        document.getElementById("container").appendChild(holder);
+    }
+
     var pulsePosition = image.getBoundingClientRect();
 
-        for (var i=1; i<=3;i++) {
-            
-            var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-
-            var x = parseInt(points[0]);
-            var y = parseInt(points[1])+pulsePosition.top - 5;
-            
-            var holder = document.createElement("div");
-            holder.className = "pulse-ball "+i;  
-            holder.id = i;      
-            holder.style.top = y; 
-            holder.style.left = x;
-            document.getElementById("container").appendChild(holder);
-        }
     image.addEventListener("load", function(){
         
         // var pulses = document.getElementsByClassName('pulse-ball');                
