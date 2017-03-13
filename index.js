@@ -1,9 +1,52 @@
+alert('Line 1')
+
+var image = document.getElementById('object-image')
+// var hasImageLoaded = image.complete;
+
+// while(!hasImageLoaded){
+//     hasImageLoaded = image.complete;
+// }
+
+var pulsePosition = image.getBoundingClientRect();
+
+image.addEventListener("load", function(){
+    alert('inside image event listener')
+    for (var i=1; i<=3;i++) {
+        var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
+
+        var x = parseInt(points[0]);
+        var y = parseInt(points[1])+pulsePosition.top - 5;
+        
+        var holder = document.createElement("div");
+        holder.className = "pulse-ball "+i;  
+        holder.id = i;      
+        holder.style.top = y; 
+        holder.style.left = x;
+        document.getElementById("container").appendChild(holder);
+    }
+    
+    // var pulses = document.getElementsByClassName('pulse-ball');                
+
+    // window.addEventListener('resize',function(){
+    //     var point,x,y;
+    //     for(var i=1;i<=3;i++){
+    //         point = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
+    //         x = parseInt(point[0]);
+    //         y = parseInt(point[1])+120;
+    //         pulses[i-1].style.top = y;
+    //         pulses[i-1].style.left = x;
+    //     }
+    // });
+});
+
 var card = document.getElementById('info-card');
 var closeCard = document.getElementById('info-card-close');
 var cardTitle = document.getElementById('info-card-title');
 var cardContent = document.getElementById('info-card-content');
 var title,content;
 var imageMap = document.querySelector('map');
+
+alert('Before Handle Click')
 
 function handleClick(poi){
     var classNames = poi.className.split(/\s+/);
@@ -27,51 +70,16 @@ function handleClick(poi){
     
 }
 
+alert('Before Image Loading code.')
 
+
+
+alert('Before DOM listener')
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     
     imageMapResize();
-    var image = document.getElementById('object-image')
-    var hasImageLoaded = image.complete;
-    
-    while(!hasImageLoaded){
-        hasImageLoaded = image.complete;
-    }
 
-    var pulsePosition = image.getBoundingClientRect();
-
-    for (var i=1; i<=3;i++) {
-        var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-
-        var x = parseInt(points[0]);
-        var y = parseInt(points[1])+pulsePosition.top - 5;
-        
-        var holder = document.createElement("div");
-        holder.className = "pulse-ball "+i;  
-        holder.id = i;      
-        holder.style.top = y; 
-        holder.style.left = x;
-        document.getElementById("container").appendChild(holder);
-    }
-
-    
-
-    image.addEventListener("load", function(){
-        
-        // var pulses = document.getElementsByClassName('pulse-ball');                
-
-        // window.addEventListener('resize',function(){
-        //     var point,x,y;
-        //     for(var i=1;i<=3;i++){
-        //         point = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-        //         x = parseInt(point[0]);
-        //         y = parseInt(point[1])+120;
-        //         pulses[i-1].style.top = y;
-        //         pulses[i-1].style.left = x;
-        //     }
-        // });
-    });
     
 
     document.addEventListener('click', function(e) {
@@ -89,6 +97,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }, false);
 
 });
+
+alert('Before Remove Card Function')
 
 function removeCard(){
     var card = document.getElementById('info-card');
