@@ -1,5 +1,3 @@
-alert('Line 1')
-
 var image = document.getElementById('object-image')
 // var hasImageLoaded = image.complete;
 
@@ -10,8 +8,7 @@ var image = document.getElementById('object-image')
 var pulsePosition = image.getBoundingClientRect();
 
 image.addEventListener("load", function(){
-    alert('inside image event listener')
-    for (var i=1; i<=3;i++) {
+        for (var i=1; i<=3;i++) {
         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
 
         var x = parseInt(points[0]);
@@ -46,7 +43,6 @@ var cardContent = document.getElementById('info-card-content');
 var title,content;
 var imageMap = document.querySelector('map');
 
-alert('Before Handle Click')
 
 function handleClick(poi){
     var classNames = poi.className.split(/\s+/);
@@ -70,11 +66,9 @@ function handleClick(poi){
     
 }
 
-alert('Before Image Loading code.')
 
 
 
-alert('Before DOM listener')
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     
@@ -98,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 });
 
-alert('Before Remove Card Function')
 
 function removeCard(){
     var card = document.getElementById('info-card');
