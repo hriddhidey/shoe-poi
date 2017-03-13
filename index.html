@@ -1,18 +1,22 @@
 <html>
     <head>
         <title>Shoe Features</title>
+            <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="pragma" content="no-cache" />
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="container">
-            <h2>Hello there.</h2>
-            <p>Here is a shoe. Check out its amazing features.</p>
+            <h2 id='title'>Hello there.</h2>
+            <p id='subtitle'>Here is a shoe. Check out its amazing features.</p>
 
-            <img id="shoe-image" src="shoes.png" alt="Shoe" usemap="#shoe">
-            <map name="shoe" id="shoe-map">
-                <area alt="" class="poi 1 front" onclick="handleClick(this)" shape="poly" coords="282,454,347,415,387,444,315,478">
-                <area alt="" class="poi 2 heel" onclick="handleClick(this)" shape="poly" coords="747,376,896,282,915,330,763,411">
-                <area alt="" class="poi 3 sole" onclick="handleClick(this)" shape="poly" coords="245,337,247,415,350,360,350,287">
+            <img id="object-image" src="shoes.png" alt="Shoe" usemap="#shoe" >
+            <map name="shoe" id="shoe-map" >
+                <area alt="" class="poi 1 front" onclick="handleClick(this)" shape="poly" coords="335,447,303,431,229,474,298,512,407,530,489,508,448,409,364,389,305,429">
+                <area alt="" class="poi 2 heel" onclick="handleClick(this)" shape="poly" coords="830,349,814,322,915,229,947,308,754,436,667,400,810,322">
+                <area alt="" class="poi 3 sole" onclick="handleClick(this)" shape="poly" coords="301,359,215,392,237,328,334,281,465,243,376,369,237,449,214,396">
             </map>
 
             <div id="info-card">
@@ -22,98 +26,6 @@
             </div>
         </div>
         <script type="text/javascript" src="map-resize.js"></script>
-        <script type="text/javascript">
-
-            var card = document.getElementById('info-card');
-            var closeCard = document.getElementById('info-card-close');
-            var cardTitle = document.getElementById('info-card-title');
-            var cardContent = document.getElementById('info-card-content');
-            var title,content;
-            var imageMap = document.querySelector('map');
-
-            function handleClick(poi){
-                var classNames = poi.className.split(/\s+/);
-                if (classNames[2]=='heel'){
-                    console.log('Heel Clicked.');
-                    title = 'Padded Heel.'
-                    content = 'Extra padding provided to cushion your heels.'
-                }
-                else if (classNames[2]=='sole'){
-                    console.log('Sole Clicked.');
-                    title = 'Improved treads.'
-                    content = 'Get more control with deeper treads. Never slip again.'
-                }
-                else if (classNames[2]=='front'){
-                    console.log('Front Clicked.');
-                    title = 'Greater aeration.'
-                    content = 'Perforated front net provides greater aeration and a lighter feeling.'
-                }
-
-                card.style.visibility="visible";
-                card.style.opacity=1;
-                cardTitle.innerHTML = title;
-                cardContent.innerHTML = content;
-                
-            }
-
-            document.addEventListener("DOMContentLoaded", function(event) { 
-                
-                imageMapResize();
-                
-
-
-                for (var i=1; i<=3;i++) {
-
-                    var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-                    var x = parseInt(points[0])+20;
-                    var y = parseInt(points[1])+120;
-                    
-                    var holder = document.createElement("div");
-                    holder.className = "pulse-ball "+i;  
-                    holder.id = i;      
-                    holder.style.top = y; 
-                    holder.style.left = x;
-                    document.getElementById("container").appendChild(holder);
-                }
-
-                document.addEventListener('click', function(e) {
-                    e = e || window.event;
-                    var target = e.target || e.srcElement;
-                        // text = target.textContent || text.innerText;   
-                    console.log(target)
-                    var classes = target.className.split(/\s+/);
-                    if(classes[0]=='pulse-ball'){
-                        var tnode = document.getElementsByClassName('poi '+classes[1])
-                        console.log(tnode)
-                        // tnode.onclick = handleClick()
-                        handleClick(tnode[0]);
-                        // handleClick(tnode)
-                    }
-                    
-                }, false);
-                
-
-                window.addEventListener('resize',function(){
-                    var pulses = document.getElementsByClassName('pulse-ball');                
-                    var point,x,y;
-                    for(var i=1;i<=3;i++){
-                        point = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-                        x = parseInt(point[0])+20;
-                        y = parseInt(point[1])+120;
-                        console.log(x,y)
-                        pulses[i-1].style.top = y;
-                        pulses[i-1].style.left = x;
-                    }
-                });
-
-            });
-
-            function removeCard(){
-                var card = document.getElementById('info-card');
-                card.style.opacity = 0;
-                card.style.visibility = "hidden";
-            }
-
-	    </script>
+        <script type="text/javascript" src="index.js"></script>
     </body>
 </html>
