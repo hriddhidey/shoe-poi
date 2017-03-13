@@ -35,8 +35,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var image = document.getElementById('object-image')
     var hasImageLoaded = image.complete;
     
-    while(!hasImageLoaded)
-    
+    while(!hasImageLoaded){
+        hasImageLoaded = image.complete;
+    }
+
     var pulsePosition = image.getBoundingClientRect();
 
     for (var i=1; i<=3;i++) {
