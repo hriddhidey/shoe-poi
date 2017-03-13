@@ -35,7 +35,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var image = document.getElementById('object-image')
     var hasImageLoaded = image.complete;
     
-    while(!hasImageLoaded);
+    while(!hasImageLoaded)
+    
+    var pulsePosition = image.getBoundingClientRect();
 
     for (var i=1; i<=3;i++) {
         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("container").appendChild(holder);
     }
 
-    var pulsePosition = image.getBoundingClientRect();
+    
 
     image.addEventListener("load", function(){
         
