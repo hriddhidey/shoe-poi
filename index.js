@@ -7,20 +7,12 @@ var image = document.getElementById('object-image')
 
 var pulsePosition = image.getBoundingClientRect();
 
-image.addEventListener("load", function(){
-        for (var i=1; i<=3;i++) {
-        var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-
-        var x = parseInt(points[0]);
-        var y = parseInt(points[1])+pulsePosition.top - 5;
-        
-        var holder = document.createElement("div");
-        holder.className = "pulse-ball "+i;  
-        holder.id = i;      
-        holder.style.top = y; 
-        holder.style.left = x;
-        document.getElementById("container").appendChild(holder);
-    }
+if(image.complete){
+    addPulses()
+}
+else {
+    image.addEventListener("load", function(){
+    addPulses()
     
     // var pulses = document.getElementsByClassName('pulse-ball');                
 
@@ -35,6 +27,24 @@ image.addEventListener("load", function(){
     //     }
     // });
 });
+}
+
+function addPulses(){
+    for (var i=1; i<=3;i++) {
+        var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
+
+        var x = parseInt(points[0]);
+        var y = parseInt(points[1])+pulsePosition.top - 5;
+        
+        var holder = document.createElement("div");
+        holder.className = "pulse-ball "+i;  
+        holder.id = i;      
+        holder.style.top = y; 
+        holder.style.left = x;
+        document.getElementById("container").appendChild(holder);
+    }    
+}
+
 
 var card = document.getElementById('info-card');
 var closeCard = document.getElementById('info-card-close');
