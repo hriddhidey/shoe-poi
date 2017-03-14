@@ -125,6 +125,10 @@ img {
     cursor: pointer;
 }
 
+/*
+*   MOBILE STYLES
+*/
+
 @media screen and (max-width: 1280px) {
 
 h2 {
