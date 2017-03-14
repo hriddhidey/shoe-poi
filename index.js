@@ -2,6 +2,7 @@ var image = document.getElementById('object-image')
 var pulsePosition = image.getBoundingClientRect();
 
 if(image.complete){
+    setTimeout(function() {addPulses()}, 2000);
     addPulses()
 }
 else {
