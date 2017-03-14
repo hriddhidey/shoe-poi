@@ -2,25 +2,11 @@ var image = document.getElementById('object-image')
 var pulsePosition = image.getBoundingClientRect();
 
 if(image.complete){
-    setTimeout(function() {addPulses()}, 2000);
-    addPulses()
+    setTimeout(function() {addPulses()}, 1000);
 }
 else {
     image.addEventListener("load", function(){
-        setTimeout(function() {addPulses()}, 2000);
-    
-        // var pulses = document.getElementsByClassName('pulse-ball');                
-
-        // window.addEventListener('resize',function(){
-        //     var point,x,y;
-        //     for(var i=1;i<=3;i++){
-        //         point = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-        //         x = parseInt(point[0]);
-        //         y = parseInt(point[1])+120;
-        //         pulses[i-1].style.top = y;
-        //         pulses[i-1].style.left = x;
-        //     }
-        // });
+        setTimeout(function() {addPulses()}, 1000);
     });
 }
 
@@ -75,14 +61,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     imageMapResize();
     document.addEventListener('click', function(e) {
         e = e || window.event;
-        var target = e.target || e.srcElement;
-            // text = target.textContent || text.innerText;   
+        var target = e.target || e.srcElement;  
         var classes = target.className.split(/\s+/);
         if(classes[0]=='pulse-ball'){
             var tnode = document.getElementsByClassName('poi '+classes[1])
-            // tnode.onclick = handleClick()
             handleClick(tnode[0]);
-            // handleClick(tnode)
         }
     }, false);
 });

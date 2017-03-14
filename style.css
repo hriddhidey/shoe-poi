@@ -8,7 +8,6 @@ body {
 
 h2 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    /*padding: 10 10 10 10;*/
     font-size: 2em;
     padding-top: 30px;
     padding-left: 30px;
@@ -46,8 +45,6 @@ img {
     position: absolute;
     top: 20vw;
     display: block;
-    /*width: 30%;*/
-    /*left: 10vw;*/
     margin: 0 auto;
     margin-left: 5vw;
     margin-top: 10vw;
@@ -58,12 +55,11 @@ img {
     font-weight: lighter;
     box-shadow: 0 5px 20px 0 #777;
     max-width: 70vw;
+    z-index: 20;
 
     -webkit-transition: opacity ease-in-out 0.5s;
     -moz-transition: opacity ease-in-out 0.5s;
     transition: opacity ease-in-out 0.5s;
-
-    z-index: 20;
 }
 
 #info-card-title {
@@ -108,12 +104,9 @@ img {
 
 .pulse-ball {
     position: absolute;
-    /*top: 20px;
-    left: 20px;*/
     height: 30px;
     width: 30px;
     z-index: 10;
-    /*background: url('pulse.gif') no-repeat center center;*/
     background-color: #88090b;
     border: 3px solid #ccff00;
     border-radius: 100%;
@@ -151,7 +144,6 @@ p{
     position: absolute;
     top: 50vw;
     padding: 5vw;
-    /*width: 70%;*/
     cursor: pointer;
 }
 
