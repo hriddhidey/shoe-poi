@@ -29,7 +29,7 @@ function addPulses(){
         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
 
         var x = parseInt(points[0]) - pulsePosition.left;
-        var y = parseInt(points[1])+pulsePosition.top - 25;
+        var y = parseInt(points[1]) + pulsePosition.top;
         
         var holder = document.createElement("div");
         holder.className = "pulse-ball "+i;  
@@ -90,5 +90,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function removeCard(){
     var card = document.getElementById('info-card');
     card.style.opacity = 0;
+    setTimeout(function(){},500);
     card.style.visibility = "hidden";
 }
