@@ -1,10 +1,4 @@
 var image = document.getElementById('object-image')
-// var hasImageLoaded = image.complete;
-
-// while(!hasImageLoaded){
-//     hasImageLoaded = image.complete;
-// }
-
 var pulsePosition = image.getBoundingClientRect();
 
 if(image.complete){
@@ -26,7 +20,7 @@ else {
     //         pulses[i-1].style.left = x;
     //     }
     // });
-});
+    });
 }
 
 function addPulses(){
@@ -73,19 +67,11 @@ function handleClick(poi){
     card.style.opacity=1;
     cardTitle.innerHTML = title;
     cardContent.innerHTML = content;
-    
 }
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     
     imageMapResize();
-
-    
-
     document.addEventListener('click', function(e) {
         e = e || window.event;
         var target = e.target || e.srcElement;
@@ -97,11 +83,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             handleClick(tnode[0]);
             // handleClick(tnode)
         }
-        
     }, false);
-
 });
-
 
 function removeCard(){
     var card = document.getElementById('info-card');
