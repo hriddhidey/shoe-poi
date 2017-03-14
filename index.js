@@ -27,7 +27,7 @@ function addPulses(){
     for (var i=1; i<=3;i++) {
         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
 
-        var x = parseInt(points[0]);
+        var x = parseInt(points[0]) - pulsePosition.left;
         var y = parseInt(points[1])+pulsePosition.top - 25;
         
         var holder = document.createElement("div");
