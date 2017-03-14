@@ -74,8 +74,6 @@ function removeCard(){
     var card = document.getElementById('info-card');
     setTimeout(function(){ 
         card.style.visibility = "hidden";
-        card.style.zIndex = 20; 
     },500);
     card.style.opacity = 0;
-    card.style.zIndex = 0;
 }
