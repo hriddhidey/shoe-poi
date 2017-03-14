@@ -90,6 +90,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function removeCard(){
     var card = document.getElementById('info-card');
     card.style.opacity = 0;
-    setTimeout(function(){},500);
-    card.style.visibility = "hidden";
+    setTimeout(function(){ card.style.visibility = "hidden"; },500);
 }
