@@ -6,20 +6,20 @@ if(image.complete){
 }
 else {
     image.addEventListener("load", function(){
-    addPulses()
+        setTimeout(function() {addPulses()}, 2000);
     
-    // var pulses = document.getElementsByClassName('pulse-ball');                
+        // var pulses = document.getElementsByClassName('pulse-ball');                
 
-    // window.addEventListener('resize',function(){
-    //     var point,x,y;
-    //     for(var i=1;i<=3;i++){
-    //         point = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-    //         x = parseInt(point[0]);
-    //         y = parseInt(point[1])+120;
-    //         pulses[i-1].style.top = y;
-    //         pulses[i-1].style.left = x;
-    //     }
-    // });
+        // window.addEventListener('resize',function(){
+        //     var point,x,y;
+        //     for(var i=1;i<=3;i++){
+        //         point = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
+        //         x = parseInt(point[0]);
+        //         y = parseInt(point[1])+120;
+        //         pulses[i-1].style.top = y;
+        //         pulses[i-1].style.left = x;
+        //     }
+        // });
     });
 }
 
