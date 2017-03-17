@@ -39,6 +39,10 @@ img {
     width: 85vw;
 }
 
+map {
+    width: 85vw;
+}
+
 #info-card {
     visibility: hidden;
     opacity: 0;
@@ -137,6 +141,10 @@ p{
 
 #object-image {
     margin-top: 15vw;
+    width: 100vw;
+}
+
+map {
     width: 100vw;
 }
 

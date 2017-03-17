@@ -8,12 +8,14 @@
             <h2 id='title'>Hello there.</h2>
             <p id='subtitle'>Here is a shoe. Check out its amazing features.</p>
 
-            <img id="object-image" src="shoes.png" alt="Shoe" usemap="#shoe">
-            <map name="shoe" id="shoe-map" >
-                <area alt="" class="poi 1 front" onclick="handleClick(this)"  shape="poly" coords="335,447,303,431,229,474,298,512,407,530,489,508,448,409,364,389,305,429">
-                <area alt="" class="poi 2 heel" onclick="handleClick(this)" shape="poly" coords="830,349,814,322,915,229,947,308,754,436,667,400,810,322">
-                <area alt="" class="poi 3 sole" onclick="handleClick(this)" shape="poly" coords="301,359,215,392,237,328,334,281,465,243,376,369,237,449,214,396">
-            </map>
+            <div id="image-container">
+                <img id="object-image" src="http://assets.myntassets.com/assets/images/1368773/2016/6/14/11465894432512-HRX-by-Hrithik-Roshan-Men-Grey--Red-Running-Shoes-5361465894432252-1.jpg" alt="Shoe" usemap="#shoe">
+                <map name="shoe" id="shoe-map" >
+                    <area alt="" class="poi 1 front" onclick="handleClick(this)"  shape="poly" coords="120,396,116,349,53,347,69,404,91,447,122,458,147,443,167,399,178,332,117,349">
+                    <area alt="" class="poi 2 heel" onclick="handleClick(this)" shape="poly" coords="406,367,385,336,415,313,454,353,394,406,357,368,384,337">
+                    <area alt="" class="poi 3 sole" onclick="handleClick(this)" shape="poly" coords="114,143,118,62,142,85,164,158,154,194,82,198,72,185,66,163,90,76,120,61">
+                </map>
+            </div>
 
             <div id="info-card">
                 <h4 id="info-card-title"></h4>
@@ -21,7 +23,6 @@
                 <button id="info-card-close" onclick="removeCard()">CLOSE</button>
             </div>
         </div>
-        <script type="text/javascript" src="map-resize.js"></script>
         <script type="text/javascript" src="index.js"></script>
     </body>
-</html>
+</html> 
