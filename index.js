@@ -1,5 +1,5 @@
 var image = document.getElementById('object-image')
-var pulsePosition = image.getBoundingClientRect();
+var imagePosition = image.getBoundingClientRect();
 var card = document.getElementById('info-card');
 var closeCard = document.getElementById('info-card-close');
 var cardTitle = document.getElementById('info-card-title');
@@ -65,8 +65,8 @@ function handleClick(poi){
 function addPulses(){
     for (var i=1; i<=3;i++) {
         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-        var x = parseInt(points[0]) - pulsePosition.left;
-        var y = parseInt(points[1]) + pulsePosition.top;
+        var x = parseInt(points[0]) + imagePosition.left;
+        var y = parseInt(points[1]) + imagePosition.top;
         
         var holder = document.createElement("div");
         holder.className = "pulse-ball "+i;  
@@ -86,9 +86,9 @@ function removeCard(){
 }
 
 function resizeMap(){
-    var originalWidth = 526;
+    var originalWidth = 480;
     var areas = document.getElementsByTagName('area')
-    var currentWidth = document.getElementById('object-image').clientWidth;
+    var currentWidth = document.getElementById('object-image').scrollWidth;
     var ratio = currentWidth/originalWidth
     var coords = []
 
