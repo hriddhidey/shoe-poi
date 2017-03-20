@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             handleClick(tnode[0]);
         }
     }, false);
+
+    window.addEventListener('orientationchange',function(){
+        resizeMap()
+    })
 });
 
 
