@@ -10,22 +10,20 @@ var imageMap = document.querySelector('map');
 
 document.addEventListener("DOMContentLoaded", function(event) { 
 
+    // This is to allow the area maps to 
+    // resize according to window resizing.
     // imageMapResize();
 
     if(image.complete){
         setTimeout(function() {
             resizeMap()
-            // addPulses()
         }, 1000);
-        // imageMapResize();
     }
     else {
         image.addEventListener("load", function(){
             setTimeout(function() {
                 resizeMap()
-                // addPulses()
             }, 1000);
-            // imageMapResize();
         });
     }
     
