@@ -1,10 +1,11 @@
 * {
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
-/*
+
 body {
     box-sizing: border-box;
-}*/
+    margin: 0 auto;
+}
 
 h2 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
