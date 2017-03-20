@@ -69,8 +69,8 @@ function addPulses(){
         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
         // var x = parseInt(points[0]) + imagePosition.left;
         // var y = parseInt(points[1]) + imagePosition.top;
-        var x = parseInt(points[0])
-        var y = parseInt(points[1]) 
+        var x = parseInt(points[0]) - 20;
+        var y = parseInt(points[1]) - 20;
         
         var holder = document.createElement("div");
         holder.className = "pulse-ball "+i;  
