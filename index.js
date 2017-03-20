@@ -1,5 +1,5 @@
 var image = document.getElementById('object-image')
-var imagePosition = image.getBoundingClientRect();
+// var imagePosition = image.getBoundingClientRect();
 var card = document.getElementById('info-card');
 var closeCard = document.getElementById('info-card-close');
 var cardTitle = document.getElementById('info-card-title');
@@ -67,8 +67,10 @@ function handleClick(poi){
 function addPulses(){
     for (var i=1; i<=3;i++) {
         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
-        var x = parseInt(points[0]) + imagePosition.left;
-        var y = parseInt(points[1]) + imagePosition.top;
+        // var x = parseInt(points[0]) + imagePosition.left;
+        // var y = parseInt(points[1]) + imagePosition.top;
+        var x = parseInt(points[0])
+        var y = parseInt(points[1]) 
         
         var holder = document.createElement("div");
         holder.className = "pulse-ball "+i;  
