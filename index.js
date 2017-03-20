@@ -37,9 +37,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }, false);
 
-    window.addEventListener('orientationchange',function(){
-        resizeMap()
-    })
+    // window.addEventListener('orientationchange',function(){
+    //     removePulses()
+    //     resizeMap()
+    // })
 });
 
 
@@ -81,6 +82,12 @@ function addPulses(){
     }    
 }
 
+// function removePulses() {
+//     for (var i=1; i<=3;i++) {
+//         var points = document.getElementsByClassName('poi '+i)[0].attributes.coords.value.split(',')
+//     }    
+// }
+
 function removeCard(){
     var card = document.getElementById('info-card');
     setTimeout(function(){ 
@@ -98,7 +105,6 @@ function resizeMap(){
 
     for(var i=0; i<areas.length;i++){
         coords[i] = areas[i].coords.split(',')
-        debugger
     }
 
     for(var i=0; i<coords.length;i++){
