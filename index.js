@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // This is to allow the area maps to 
     // resize according to window resizing.
     // imageMapResize();
-
+    
     if(image.complete){
         setTimeout(function() {
             resizeMap()
